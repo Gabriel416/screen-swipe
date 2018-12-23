@@ -19,7 +19,7 @@ const Searchbar = () => {
           onChange={e => setinputValue(e.target.value)}
           placeholder="URL"
           autoFocus
-          className="searchbar"
+          className="searchbar w-80 w-70-m w-50-l"
         />
         <i
           className={classnames(

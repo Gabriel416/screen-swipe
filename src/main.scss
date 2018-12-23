@@ -1,0 +1,11 @@
+@import "./assets/styles/palette";
+@import "./assets/styles/mixins";
+
+body {
+  margin: 0px;
+  padding: 0px;
+  background-color: $primary;
+}
+
+.App {
+}

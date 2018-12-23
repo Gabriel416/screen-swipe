@@ -2,10 +2,15 @@
 @import "./assets/styles/mixins";
 
 body {
+  width: 100%;
+  height: 100%;
   margin: 0px;
   padding: 0px;
+  font-family: "Poppins", Arial, sans-serif;
   background-color: $primary;
+  color: $text;
 }
 
 .App {
+  @import "./assets/styles/views/Home/home";
 }

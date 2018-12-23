@@ -1,0 +1,35 @@
+.searchbar {
+  background: transparent;
+  border-top: transparent;
+  border-left: transparent;
+  border-right: transparent;
+  border-bottom: 4px solid $text;
+  padding: 5px 5px 5px 2px;
+  font-size: 20px;
+  outline: none;
+  margin-left: 20px;
+  caret-color: transparent;
+}
+
+.searchbar::placeholder {
+  color: $text;
+}
+
+.searchbar:focus {
+  caret-color: $text;
+}
+
+.fa-search,
+.search-disabled {
+  font-size: 22px;
+  margin-left: 10px;
+}
+
+.fa-search {
+  cursor: pointer;
+}
+
+.search-disabled {
+  color: rgba($color: $text, $alpha: 0.75);
+  cursor: initial;
+}

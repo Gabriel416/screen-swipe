@@ -7,7 +7,7 @@ const Header = () => {
       <img src={foxLogo} alt="Screen swipe logo" />
       <h1 className="f2 f1-l">Screen Swipe</h1>
       <h3 className="f5 f4-l">
-        Get a gorgeous screenshot of any website or image of your choice
+        Get a gorgeous screenshot of any website or image of your choice.
       </h3>
     </div>
   );

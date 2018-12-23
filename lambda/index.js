@@ -15,7 +15,11 @@
 
 const serverless = require("serverless-http");
 const express = require("express");
+const morgan = require("morgan");
+const Jimp = require("jimp");
 const app = express();
+
+app.use(morgan("combined"));
 
 app.get("/", (req, res) => {
   res.send("Hello World!");

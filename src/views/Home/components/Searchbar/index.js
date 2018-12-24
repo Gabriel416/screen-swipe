@@ -1,15 +1,15 @@
 import React, { useState } from "react";
 import classnames from "classnames";
 
-const Searchbar = ({ handleUrlSubmit }) => {
+const Searchbar = ({ handleSubmit }) => {
   const [inputValue, setinputValue] = useState("");
 
-  const handleSubmit = e => {
+  const handleInput = e => {
     e.preventDefault();
     // Validate if valid url and do something
     console.log(inputValue, "input value");
     let formattedUrl = inputValue;
-    handleUrlSubmit(null, formattedUrl);
+    handleSubmit(null, formattedUrl);
   };
 
   return (
@@ -28,7 +28,7 @@ const Searchbar = ({ handleUrlSubmit }) => {
             "fas fa-search",
             !inputValue && "search-disabled"
           )}
-          onClick={e => handleSubmit(e)}
+          onClick={e => handleInput(e)}
         />
       </form>
     </div>

@@ -17,19 +17,11 @@ const Home = () => {
     });
   };
 
-  const handleImageSubmit = image => {
+  const handleSubmit = (image = null, url = null) => {
     console.log(image, "image");
-    setIsLoading(true);
-    setTimeout(() => {
-      setIsLoading(false);
-    }, 5000);
-  };
-
-  const handleUrlSubmit = url => {
     console.log(url, "url");
     console.log(httpService, "service");
     setIsLoading(true);
-    console.log(httpService, "service");
     setTimeout(() => {
       setIsLoading(false);
     }, 5000);
@@ -49,8 +41,8 @@ const Home = () => {
       <Header {...homeText} isLoading={isLoading} />
       {!isLoading && (
         <div>
-          <Upload handleImageSubmit={handleImageSubmit} />
-          <Searchbar handleUrlSubmit={handleUrlSubmit} />
+          <Upload handleSubmit={handleSubmit} />
+          <Searchbar handleSubmit={handleSubmit} />
         </div>
       )}
     </div>

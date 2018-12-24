@@ -1,16 +1,38 @@
-import React from "react";
+import React, { useState } from "react";
+import { dropzoneText, dropzoneError } from "../../../../config";
 import classnames from "classnames";
 import Dropzone from "react-dropzone";
 
-const Upload = ({ handleImageSubmit }) => {
+const Upload = ({ handleSubmit }) => {
+  const acceptedFileTypes =
+    "image/x-png, image/png, image/jpg, image/jpeg, image/gif";
+  const [uploadError, setUploadError] = useState(false);
+
   const onDrop = (acceptedFile, rejectedFile) => {
+    rejectedFile = true;
+    if (rejectedFile) {
+      setUploadError(true);
+      return;
+    }
     // Do something with files
     console.log(acceptedFile, rejectedFile, "HERE");
-    handleImageSubmit(acceptedFile[0]);
+    setUploadError(false);
+    handleSubmit(acceptedFile[0]);
   };
   return (
-    <div className="w-80 w-70-m w-50-l mb2 relative center dropzone-wrapper">
-      <Dropzone onDrop={e => onDrop(e)} className="dropzone">
+    <div
+      className={classnames(
+        "w-80 w-70-m w-50-l mb2 relative center dropzone-wrapper",
+        uploadError ? "upload-error" : undefined
+      )}
+    >
+      <Dropzone
+        multiple={false}
+        maxSize={31457280}
+        accept={acceptedFileTypes}
+        onDrop={e => onDrop(e)}
+        className="dropzone"
+      >
         {({ getRootProps, getInputProps, isDragActive }) => {
           return (
             <div
@@ -23,7 +45,7 @@ const Upload = ({ handleImageSubmit }) => {
               <div className="upload-content">
                 <i className="far fa-file-image" />
                 <p className="f7 f6-l">
-                  Drag and drop image or click here to upload
+                  {uploadError ? dropzoneError : dropzoneText}
                 </p>
               </div>
             </div>

@@ -1,13 +1,15 @@
 import React, { useState } from "react";
 import classnames from "classnames";
 
-const Searchbar = () => {
+const Searchbar = ({ handleUrlSubmit }) => {
   const [inputValue, setinputValue] = useState("");
 
   const handleSubmit = e => {
     e.preventDefault();
     // Validate if valid url and do something
     console.log(inputValue, "input value");
+    let formattedUrl = inputValue;
+    handleUrlSubmit(null, formattedUrl);
   };
 
   return (

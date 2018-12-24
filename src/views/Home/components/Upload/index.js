@@ -1,16 +1,16 @@
 import React from "react";
 import classnames from "classnames";
 import Dropzone from "react-dropzone";
-import { reject } from "q";
 
-const Upload = () => {
-  const onDrop = (acceptedFiles, rejectedFiles) => {
+const Upload = ({ handleImageSubmit }) => {
+  const onDrop = (acceptedFile, rejectedFile) => {
     // Do something with files
-    console.log(acceptedFiles, rejectedFiles, "HERE");
+    console.log(acceptedFile, rejectedFile, "HERE");
+    handleImageSubmit(acceptedFile[0]);
   };
   return (
     <div className="w-80 w-70-m w-50-l mb2 relative center dropzone-wrapper">
-      <Dropzone onDrop={onDrop()} className="dropzone">
+      <Dropzone onDrop={e => onDrop(e)} className="dropzone">
         {({ getRootProps, getInputProps, isDragActive }) => {
           return (
             <div

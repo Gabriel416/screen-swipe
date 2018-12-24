@@ -16,11 +16,13 @@
   z-index: 999;
 }
 
-.dropzone:hover .upload-content {
+.dropzone:hover .upload-content,
+.isDragActive .upload-content {
   border-color: $muted-dark;
 }
 
-.dropzone:hover .fa-file-image {
+.dropzone:hover .fa-file-image,
+.isDragActive .fa-file-image {
   color: $muted-dark;
 }
 
@@ -29,12 +31,12 @@
   border-radius: 10px;
   padding: 5px;
   border: 4px dashed $gray;
-  transition: 0.3s ease-in;
+  transition: 0.25s ease-in;
 }
 
 .fa-file-image {
   font-size: 50px;
   color: $dark-gray;
   margin-top: 10px;
-  transition: 0.3s ease-in;
+  transition: 0.25s ease-in;
 }

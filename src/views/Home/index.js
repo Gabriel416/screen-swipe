@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { title, subText, loadingTitle, loadingSubText } from "../../config";
+import { httpService } from "../../utils/services";
 
 import Header from "./components/Header";
 import Upload from "./components/Upload";
@@ -16,6 +17,24 @@ const Home = () => {
     });
   };
 
+  const handleImageSubmit = image => {
+    console.log(image, "image");
+    setIsLoading(true);
+    setTimeout(() => {
+      setIsLoading(false);
+    }, 5000);
+  };
+
+  const handleUrlSubmit = url => {
+    console.log(url, "url");
+    console.log(httpService, "service");
+    setIsLoading(true);
+    console.log(httpService, "service");
+    setTimeout(() => {
+      setIsLoading(false);
+    }, 5000);
+  };
+
   useEffect(
     () => {
       isLoading
@@ -30,8 +49,8 @@ const Home = () => {
       <Header {...homeText} isLoading={isLoading} />
       {!isLoading && (
         <div>
-          <Upload />
-          <Searchbar />
+          <Upload handleImageSubmit={handleImageSubmit} />
+          <Searchbar handleUrlSubmit={handleUrlSubmit} />
         </div>
       )}
     </div>

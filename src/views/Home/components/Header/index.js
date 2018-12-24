@@ -3,7 +3,7 @@ import foxLogo from "../../../../assets/images/foxLogo.png";
 
 const Header = ({ title, subText, isLoading }) => {
   return (
-    <header className="header-wrapper mt6 mb5">
+    <header className="header-wrapper mt5 mb4 mb5-l">
       <img
         src={foxLogo}
         alt="Screen swipe logo"

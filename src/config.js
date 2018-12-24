@@ -9,3 +9,7 @@ export const loadingSubText =
 // DROPZONE
 export const dropzoneText = "Drag and drop image or click here to upload";
 export const dropzoneError = "Upload Error: We can't process that file type'";
+
+// URL SEARCH
+export const placeHolder = "URL";
+export const errorPlaceHolder = "Please enter a valid url";

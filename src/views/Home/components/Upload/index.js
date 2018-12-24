@@ -9,7 +9,6 @@ const Upload = ({ handleSubmit }) => {
   const [uploadError, setUploadError] = useState(false);
 
   const onDrop = (acceptedFile, rejectedFile) => {
-    rejectedFile = true;
     if (rejectedFile) {
       setUploadError(true);
       return;
@@ -22,7 +21,7 @@ const Upload = ({ handleSubmit }) => {
   return (
     <div
       className={classnames(
-        "w-80 w-70-m w-50-l mb2 relative center dropzone-wrapper",
+        "w-80 w-70-m w-50-l relative center dropzone-wrapper",
         uploadError ? "upload-error" : undefined
       )}
     >

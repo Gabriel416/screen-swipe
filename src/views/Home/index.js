@@ -11,10 +11,7 @@ const Home = () => {
   const [homeText, setHomeText] = useState({ title, subText });
 
   const handleHomeTextChange = (title, subText) => {
-    setHomeText({
-      title,
-      subText
-    });
+    setHomeText({ title, subText });
   };
 
   const handleSubmit = (image = null, url = null) => {
@@ -42,6 +39,7 @@ const Home = () => {
       {!isLoading && (
         <div>
           <Upload handleSubmit={handleSubmit} />
+          <p className="mv4">Or enter a website below</p>
           <Searchbar handleSubmit={handleSubmit} />
         </div>
       )}

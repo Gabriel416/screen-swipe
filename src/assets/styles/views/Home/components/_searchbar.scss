@@ -11,64 +11,13 @@
   caret-color: transparent;
 }
 
-.image-loader {
-  -webkit-animation: spin 3s linear infinite;
-  -moz-animation: spin 3s linear infinite;
-  animation: spin 3s linear infinite;
+.form-error .searchbar {
+  border-color: $alternate;
 }
 
-@-webkit-keyframes spin {
-  0% {
-    -webkit-transform: rotate(0deg);
-  }
-  25% {
-    -webkit-transform: rotate(20deg);
-  }
-  50% {
-    -webkit-transform: rotate(0deg);
-  }
-  75% {
-    -webkit-transform: rotate(-20deg);
-  }
-  100% {
-    -webkit-transform: rotate(0deg);
-  }
-}
-
-@-moz-keyframes spin {
-  0% {
-    -moz-transform: rotate(0deg);
-  }
-  25% {
-    -moz-transform: rotate(20deg);
-  }
-  50% {
-    -moz-transform: rotate(0deg);
-  }
-  75% {
-    -moz-transform: rotate(-20deg);
-  }
-  100% {
-    -moz-transform: rotate(0deg);
-  }
-}
-
-@keyframes spin {
-  0% {
-    transform: rotate(0deg);
-  }
-  25% {
-    transform: rotate(20deg);
-  }
-  50% {
-    transform: rotate(0deg);
-  }
-  75% {
-    transform: rotate(-20deg);
-  }
-  100% {
-    transform: rotate(0deg);
-  }
+.form-error .searchbar::placeholder,
+.form-error .fa-search {
+  color: $alternate;
 }
 
 .searchbar::placeholder {

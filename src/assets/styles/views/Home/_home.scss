@@ -2,6 +2,7 @@
   margin: 0 auto;
   text-align: center;
 
-  @import "./components/searchbar";
+  @import "./components/header";
   @import "./components/upload";
+  @import "./components/searchbar";
 }

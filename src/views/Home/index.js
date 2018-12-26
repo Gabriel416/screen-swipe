@@ -14,14 +14,20 @@ const Home = () => {
     setHomeText({ title, subText });
   };
 
-  const handleSubmit = (image = null, url = null) => {
-    console.log(image, "image");
-    console.log(url, "url");
-    console.log(httpService, "service");
+  const handleSubmit = async (image = null, url = null) => {
     setIsLoading(true);
+    if (url) {
+      console.log(process.env);
+      const data = await httpService(
+        `${process.env.REACT_APP_LOCAL_API}/capture-image`,
+        {
+          url
+        }
+      );
+    }
     setTimeout(() => {
       setIsLoading(false);
-    }, 5000);
+    }, 3000);
   };
 
   useEffect(

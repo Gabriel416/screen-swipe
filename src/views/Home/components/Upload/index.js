@@ -13,10 +13,14 @@ const Upload = ({ handleSubmit }) => {
       setUploadError(true);
       return;
     }
+    // console.log(acceptedFile, rejectedFile, "HERE");
     // Do something with files
-    console.log(acceptedFile, rejectedFile, "HERE");
-    setUploadError(false);
-    handleSubmit(acceptedFile[0]);
+    const reader = new FileReader();
+    reader.readAsDataURL(acceptedFile[0]);
+    reader.onload = () => {
+      setUploadError(false);
+      handleSubmit(reader.result);
+    };
   };
   return (
     <div

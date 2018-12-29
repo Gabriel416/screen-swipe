@@ -21,9 +21,19 @@ provider:
   name: aws
   runtime: nodejs8.10
 
+  environment:
+    CUSTOM_CHROME: true
+
 plugins:
   - serverless-offline
   - serverless-plugin-chrome
+  - serverless-apigw-binary
+  - serverless-apigwy-binary
+
+custom:
+  apigwBinary:
+    types:
+      - "*/*"
 
 # you can overwrite defaults here
 #  stage: dev
@@ -69,7 +79,11 @@ functions:
     timeout: 30
     memorySize: 1536
     events:
-      - http: "POST /capture-image"
+      - http:
+          path: /capture-image
+          method: post
+          cors: true
+          contentHandling: CONVERT_TO_BINARY
 #    The following are a few example events you can configure
 #    NOTE: Please make sure to change your handler code to work with those events
 #    Check the event documentation for details

@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import axios from "axios";
 import { title, subText, loadingTitle, loadingSubText } from "../../config";
 import { httpService } from "../../utils/services";
 
@@ -17,17 +18,21 @@ const Home = () => {
   const handleSubmit = async (image = null, url = null) => {
     setIsLoading(true);
     if (url) {
-      console.log(process.env);
-      const data = await httpService(
-        `${process.env.REACT_APP_LOCAL_API}/capture-image`,
-        {
-          url
-        }
-      );
+      try {
+        const response = await axios.post(
+          `${process.env.REACT_APP_LOCAL_API}/capture-image`,
+          {
+            url,
+            responseType: "stream"
+          }
+        );
+        console.log(response, "response");
+      } catch (error) {
+        console.log(error, "error");
+      } finally {
+        setIsLoading(false);
+      }
     }
-    setTimeout(() => {
-      setIsLoading(false);
-    }, 3000);
   };
 
   useEffect(

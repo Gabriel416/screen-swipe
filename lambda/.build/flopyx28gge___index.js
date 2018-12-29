@@ -1,6 +1,6 @@
 const launch = require('@serverless-chrome/lambda')
 
-const handler = require('./flopyx28gge___index.js')
+const handler = require('./sg5xg5stog___index.js')
 const options = {"flags":[]}
 
 module.exports.handler = function ensureHeadlessChrome (

@@ -8,7 +8,7 @@ const Searchbar = ({ handleSubmit }) => {
 
   const handleInput = e => {
     e.preventDefault();
-    const isValidUrl = /^((https?|ftp|smtp):\/\/)?(www.)?[a-z0-9]+(\.[a-z]{2,}){1,3}(#?\/?[a-zA-Z0-9#]+)*\/?(\?[a-zA-Z0-9-_]+=[a-zA-Z0-9-%]+&?)?$/;
+    const isValidUrl = /[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/;
     if (isValidUrl.test(inputValue)) {
       setInputError(false);
       handleSubmit(null, inputValue);

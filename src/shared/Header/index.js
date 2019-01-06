@@ -1,5 +1,5 @@
 import React from "react";
-import foxLogo from "../../../../assets/images/foxLogo.png";
+import foxLogo from "../../assets/images/foxLogo.png";
 
 const Header = ({ title, subText, isLoading }) => {
   return (

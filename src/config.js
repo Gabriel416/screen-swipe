@@ -5,6 +5,9 @@ export const subText =
 export const loadingTitle = "Loading...";
 export const loadingSubText =
   "Please wait while we take care of preparing your sceenshot.";
+export const errorTitle = "Whoops";
+export const errorSubText =
+  "Looks like something went wrong while proccessing your image :(";
 
 // DROPZONE
 export const dropzoneText = "Drag and drop image or click here to upload";

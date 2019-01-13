@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react";
-import browserMockup from "../../assets/images/browser-light.png";
 import {
   urlPrefix,
   loadingTitle,
   loadingSubText,
   errorTitle,
   errorSubText,
-  icons
+  icons,
+  browserOptions
 } from "../../config";
 
 import MenuEditor from "./components/MenuEditor";
@@ -17,6 +17,7 @@ const Result = ({ history, location }) => {
   const [selectedColor, setSelectedColor] = useState("transparent");
   const [rangePaddingSliderValue, setRangePaddingSliderValue] = useState(30);
   const [rangeBorderSliderValue, setRangeBorderSliderValue] = useState(5);
+  const [browserStyling, setBrowserStyling] = useState("light");
   const [homeText, setHomeText] = useState({
     title: loadingTitle,
     subText: loadingSubText
@@ -27,9 +28,9 @@ const Result = ({ history, location }) => {
   });
   console.log(deviceSize, location, "location");
 
-  // useEffect(() => {
-  //   !location.state && history.push("/");
-  // });
+  useEffect(() => {
+    !location.state && history.push("/");
+  });
 
   const handleSettingsChange = () => {
     setIsLoading(true);
@@ -60,7 +61,10 @@ const Result = ({ history, location }) => {
               setRangePaddingSliderValue={setRangePaddingSliderValue}
               rangeBorderSliderValue={rangeBorderSliderValue}
               setRangeBorderSliderValue={setRangeBorderSliderValue}
+              browserStyling={browserStyling}
+              setBrowserStyling={setBrowserStyling}
               icons={icons}
+              browserOptions={browserOptions}
             />
           )}
           <div className="image-preview">
@@ -72,15 +76,31 @@ const Result = ({ history, location }) => {
                 borderRadius: `${rangeBorderSliderValue}px`
               }}
             >
-              <div className="image-wrapper">
-                <img
-                  src={`${urlPrefix}?address=${location.state.url}?height=${
-                    deviceSize.height
-                  }?width=${deviceSize.width}`}
-                  alt="preview image"
-                  onLoad={() => setIsLoading(false)}
-                  onError={() => handleError()}
-                />
+              <div className="browser">
+                <div
+                  className="browser-header"
+                  style={{
+                    backgroundColor:
+                      browserStyling === "light" ? "#e7e7e7" : "#191919"
+                  }}
+                >
+                  <div className="browser-buttons">
+                    <span className="button close" />
+                    <span className="button minimize" />
+                    <span className="button maximize" />
+                  </div>
+                </div>
+
+                <div className="browser-content">
+                  <img
+                    src={`${urlPrefix}?address=${location.state.url}?height=${
+                      deviceSize.height
+                    }?width=${deviceSize.width}`}
+                    alt="preview image"
+                    onLoad={() => setIsLoading(false)}
+                    onError={() => handleError()}
+                  />
+                </div>
               </div>
             </div>
           </div>

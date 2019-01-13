@@ -12,7 +12,10 @@ const MenuEditor = ({
   setRangePaddingSliderValue,
   rangeBorderSliderValue,
   setRangeBorderSliderValue,
-  icons
+  browserStyling,
+  setBrowserStyling,
+  icons,
+  browserOptions
 }) => {
   const [viewColorPicker, setViewColorPicker] = useState(false);
   const [isIconSelected, setIsIconSelected] = useState("desktop");
@@ -22,15 +25,29 @@ const MenuEditor = ({
     setDeviceSize(icon.dimensions);
   };
 
-  const renderSizeChoices = () => {
+  const handleBrowserStylingChange = icon => {
+    setViewColorPicker(false);
+    setBrowserStyling(icon.name);
+  };
+
+  const handleColorOption = (noneSelected = false) => {
+    if (noneSelected) {
+      setViewColorPicker(false);
+      setSelectedColor("transparent");
+    } else {
+      setViewColorPicker(!viewColorPicker);
+    }
+  };
+
+  const renderIconList = (icons, selectedState, callback) => {
     return icons.map(icon => {
       return (
         <div
           key={icon.name}
-          onClick={() => handleSizeChange(icon)}
+          onClick={() => callback(icon)}
           className={classnames(
             "size-option",
-            isIconSelected === icon.name ? "selected-size" : ""
+            selectedState === icon.name ? "selected-size" : ""
           )}
         >
           <p className="tc f6 size-icon-label">{icon.name.toUpperCase()}</p>
@@ -42,12 +59,37 @@ const MenuEditor = ({
 
   return (
     <div className="menu">
-      <p>Styling</p>
-      <div
-        className="swatch"
-        onClick={() => setViewColorPicker(!viewColorPicker)}
-      >
-        <div className="swatch-color" style={{ background: selectedColor }} />
+      <p className="option-title">Background Color</p>
+      <div className="icon-wrapper">
+        <div
+          className={classnames(
+            "size-option",
+            viewColorPicker || selectedColor !== "transparent"
+              ? "selected-size"
+              : ""
+          )}
+          onClick={() => handleColorOption(false)}
+        >
+          <p className="tc f6 size-icon-label">Color Picker</p>
+          <div className="swatch">
+            <div
+              className="swatch-color"
+              style={{ background: selectedColor }}
+            />
+          </div>
+        </div>
+        <div
+          className={classnames(
+            "size-option",
+            !viewColorPicker && selectedColor === "transparent"
+              ? "selected-size"
+              : ""
+          )}
+          onClick={() => handleColorOption(true)}
+        >
+          <p className="tc f6 size-icon-label">None</p>
+          <i class="fas fa-times" />
+        </div>
       </div>
       {viewColorPicker && (
         <SketchPicker
@@ -56,22 +98,33 @@ const MenuEditor = ({
           onChange={color => setSelectedColor(color.hex)}
         />
       )}
-      <div className="image-size">{renderSizeChoices()}</div>
-      <p>Background Padding</p>
+      {/* <div className="icon-wrapper">
+        {renderIconList(icons, isIconSelected, handleSizeChange)}
+      </div> */}
+      <p className="option-title">Browser Styling</p>
+      <div className="icon-wrapper">
+        {renderIconList(
+          browserOptions,
+          browserStyling,
+          handleBrowserStylingChange
+        )}
+      </div>
+      <p className="option-title">Background Padding</p>
       <RangeSlider
         rangeSliderValue={rangePaddingSliderValue}
         setRangeSliderValue={setRangePaddingSliderValue}
       />
-      <p>Background Radius</p>
+      <p className="option-title">Background Radius</p>
       <RangeSlider
         rangeSliderValue={rangeBorderSliderValue}
         setRangeSliderValue={setRangeBorderSliderValue}
       />
-      <p>File Type</p>
+      <p className="option-title">File Type</p>
       <select name="file-type">
         <option value="PNG">PNG</option>
         <option value="JPEG">JPEG</option>
       </select>
+      <br />
       <button className="download-button">Download</button>
     </div>
   );

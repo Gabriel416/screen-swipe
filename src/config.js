@@ -22,7 +22,7 @@ export const urlPrefix = `${
   process.env.REACT_APP_AWS_LAMBDA_DEV
 }/capture-image`;
 
-// ICON DATA FOR MENU EDITOR
+// MENU EDITOR CONFIG
 export const icons = [
   {
     name: "mobile",
@@ -38,5 +38,16 @@ export const icons = [
     name: "desktop",
     class: "fas fa-desktop",
     dimensions: { height: 600, width: 1020 }
+  }
+];
+
+export const browserOptions = [
+  {
+    name: "light",
+    class: "fas fa-sun"
+  },
+  {
+    name: "dark",
+    class: "fas fa-moon"
   }
 ];

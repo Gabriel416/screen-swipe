@@ -19,12 +19,57 @@
     margin-top: 50px;
   }
 
-  // .image-wrapper {
-  //   height: 600px;
-  //   width: 1024px;
-  //   background: url("/images/browser-light.png") no-repeat;
-  //   background-size: 600px;
-  // }
+  .browser {
+    width: auto;
+    .browser-header {
+      padding: 0px 5px;
+      height: 40px;
+      line-height: 25px;
+      background-color: $browser-light;
+      border-top-left-radius: 5px;
+      border-top-right-radius: 5px;
+
+      .browser-buttons {
+        height: 100%;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        margin-left: 5px;
+      }
+
+      .button {
+        height: 13px;
+        width: 13px;
+        margin: 4px;
+        border-radius: 512px;
+        display: inline-block;
+
+        &.close {
+          background: #fc605c;
+        }
+
+        &.minimize {
+          background: #fdbb40;
+        }
+
+        &.maximize {
+          background: #34c649;
+        }
+      }
+    }
+    .browser-content {
+      min-height: 350px;
+      position: relative;
+      background-color: transparent;
+      img {
+        width: 100%;
+        height: 100%;
+        border-bottom-left-radius: 5px;
+        border-bottom-right-radius: 5px;
+      }
+    }
+  }
+
   @import "./components/menuEditor";
   @import "./components/rangeSlider";
   @import "../../shared/header";

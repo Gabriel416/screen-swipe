@@ -88,7 +88,7 @@ const MenuEditor = ({
           onClick={() => handleColorOption(true)}
         >
           <p className="tc f6 size-icon-label">None</p>
-          <i class="fas fa-times" />
+          <i className="fas fa-times" />
         </div>
       </div>
       {viewColorPicker && (

@@ -77,19 +77,21 @@ const Result = ({ history, location }) => {
               }}
             >
               <div className="browser">
-                <div
-                  className="browser-header"
-                  style={{
-                    backgroundColor:
-                      browserStyling === "light" ? "#e7e7e7" : "#191919"
-                  }}
-                >
-                  <div className="browser-buttons">
-                    <span className="button close" />
-                    <span className="button minimize" />
-                    <span className="button maximize" />
+                {!isLoading && (
+                  <div
+                    className="browser-header"
+                    style={{
+                      backgroundColor:
+                        browserStyling === "light" ? "#e7e7e7" : "#191919"
+                    }}
+                  >
+                    <div className="browser-buttons">
+                      <span className="button close" />
+                      <span className="button minimize" />
+                      <span className="button maximize" />
+                    </div>
                   </div>
-                </div>
+                )}
 
                 <div className="browser-content">
                   <img

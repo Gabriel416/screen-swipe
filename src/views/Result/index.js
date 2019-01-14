@@ -65,6 +65,7 @@ const Result = ({ history, location }) => {
               setBrowserStyling={setBrowserStyling}
               icons={icons}
               browserOptions={browserOptions}
+              deviceSize={deviceSize}
             />
           )}
           <div className="image-preview">
@@ -82,7 +83,7 @@ const Result = ({ history, location }) => {
                     className="browser-header"
                     style={{
                       backgroundColor:
-                        browserStyling === "light" ? "#e7e7e7" : "#191919"
+                        browserStyling === "light" ? "#DEE1E6" : "#191919"
                     }}
                   >
                     <div className="browser-buttons">

@@ -3,6 +3,9 @@ import classnames from "classnames";
 import { SketchPicker } from "react-color";
 
 import RangeSlider from "./components/RangeSlider";
+import BackgroundChoices from "./components/BackgroundChoices";
+const htmlToImage = require("html-to-image");
+const FileSaver = require("file-saver");
 
 const MenuEditor = ({
   selectedColor,
@@ -15,10 +18,41 @@ const MenuEditor = ({
   browserStyling,
   setBrowserStyling,
   icons,
-  browserOptions
+  browserOptions,
+  deviceSize
 }) => {
   const [viewColorPicker, setViewColorPicker] = useState(false);
   const [isIconSelected, setIsIconSelected] = useState("desktop");
+  const [fileType, setFileType] = useState("PNG");
+  const [isDownloadDisabled, setIsDownloadDisabled] = useState(false);
+
+  const downloadImage = () => {
+    setIsDownloadDisabled(true);
+    const node = document.querySelector(".main");
+    let handlerFunc;
+    switch (fileType) {
+      case "PNG":
+        handlerFunc = htmlToImage.toPng;
+        break;
+      case "JPEG":
+        handlerFunc = htmlToImage.toJpeg;
+        break;
+      case "SVG":
+        handlerFunc = htmlToImage.toSvgDataURL;
+        break;
+      default:
+        handlerFunc = htmlToImage.toPng;
+        break;
+    }
+    handlerFunc(node, { height: "900", width: "1800" })
+      .then(dataUrl => {
+        FileSaver.saveAs(
+          dataUrl,
+          `screen-swipe-screenshot.${fileType.toLowerCase()}`
+        );
+      })
+      .finally(() => setIsDownloadDisabled(false));
+  };
 
   const handleSizeChange = icon => {
     setIsIconSelected(icon.name);
@@ -60,37 +94,11 @@ const MenuEditor = ({
   return (
     <div className="menu">
       <p className="option-title">Background Color</p>
-      <div className="icon-wrapper">
-        <div
-          className={classnames(
-            "size-option",
-            viewColorPicker || selectedColor !== "transparent"
-              ? "selected-size"
-              : ""
-          )}
-          onClick={() => handleColorOption(false)}
-        >
-          <p className="tc f6 size-icon-label">Color Picker</p>
-          <div className="swatch">
-            <div
-              className="swatch-color"
-              style={{ background: selectedColor }}
-            />
-          </div>
-        </div>
-        <div
-          className={classnames(
-            "size-option",
-            !viewColorPicker && selectedColor === "transparent"
-              ? "selected-size"
-              : ""
-          )}
-          onClick={() => handleColorOption(true)}
-        >
-          <p className="tc f6 size-icon-label">None</p>
-          <i className="fas fa-times" />
-        </div>
-      </div>
+      <BackgroundChoices
+        viewColorPicker={viewColorPicker}
+        selectedColor={selectedColor}
+        handleColorOption={handleColorOption}
+      />
       {viewColorPicker && (
         <SketchPicker
           className="color-picker"
@@ -120,12 +128,20 @@ const MenuEditor = ({
         setRangeSliderValue={setRangeBorderSliderValue}
       />
       <p className="option-title">File Type</p>
-      <select name="file-type">
+      <select name="file-type" onChange={e => setFileType(e.target.value)}>
         <option value="PNG">PNG</option>
         <option value="JPEG">JPEG</option>
+        <option value="SVG">SVG</option>
       </select>
       <br />
-      <button className="download-button">Download</button>
+      <button
+        type="button"
+        className="download-button"
+        disabled={isDownloadDisabled}
+        onClick={() => downloadImage()}
+      >
+        {isDownloadDisabled ? "Downloading..." : "Download"}
+      </button>
     </div>
   );
 };

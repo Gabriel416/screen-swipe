@@ -93,6 +93,10 @@ const MenuEditor = ({
 
   return (
     <div className="menu">
+      <p className="option-title">Device Size</p>
+      <div className="icon-wrapper">
+        {renderIconList(icons, isIconSelected, handleSizeChange)}
+      </div>
       <p className="option-title">Background Color</p>
       <BackgroundChoices
         viewColorPicker={viewColorPicker}
@@ -106,9 +110,6 @@ const MenuEditor = ({
           onChange={color => setSelectedColor(color.hex)}
         />
       )}
-      {/* <div className="icon-wrapper">
-        {renderIconList(icons, isIconSelected, handleSizeChange)}
-      </div> */}
       <p className="option-title">Browser Styling</p>
       <div className="icon-wrapper">
         {renderIconList(

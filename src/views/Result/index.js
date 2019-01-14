@@ -96,9 +96,9 @@ const Result = ({ history, location }) => {
 
                 <div className="browser-content">
                   <img
-                    src={`${urlPrefix}?address=${location.state.url}?height=${
+                    src={`${urlPrefix}?address=${location.state.url}&height=${
                       deviceSize.height
-                    }?width=${deviceSize.width}`}
+                    }&width=${deviceSize.width}`}
                     alt="preview image"
                     onLoad={() => setIsLoading(false)}
                     onError={() => handleError()}

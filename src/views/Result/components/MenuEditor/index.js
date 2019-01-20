@@ -18,7 +18,8 @@ const MenuEditor = ({
   browserStyling,
   setBrowserStyling,
   icons,
-  browserOptions
+  browserOptions,
+  urlSearch
 }) => {
   const [viewColorPicker, setViewColorPicker] = useState(false);
   const [isIconSelected, setIsIconSelected] = useState("desktop");
@@ -93,10 +94,15 @@ const MenuEditor = ({
 
   return (
     <div className="menu">
-      <p className="option-title">Device Size</p>
-      <div className="icon-wrapper">
-        {renderIconList(icons, isIconSelected, handleSizeChange)}
-      </div>
+      <div />
+      {urlSearch && (
+        <div>
+          <p className="option-title">Device Size</p>
+          <div className="icon-wrapper">
+            {renderIconList(icons, isIconSelected, handleSizeChange)}
+          </div>
+        </div>
+      )}
       <p className="option-title">Background Color</p>
       <BackgroundChoices
         viewColorPicker={viewColorPicker}

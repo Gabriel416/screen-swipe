@@ -26,7 +26,6 @@ const Result = ({ history, location }) => {
     height: 600,
     width: 1020
   });
-  console.log(location, "location");
 
   useEffect(() => {
     !location.state && history.push("/");
@@ -73,6 +72,7 @@ const Result = ({ history, location }) => {
               setBrowserStyling={setBrowserStyling}
               icons={icons}
               browserOptions={browserOptions}
+              urlSearch={location.state.url}
             />
           )}
           <div className="image-preview">

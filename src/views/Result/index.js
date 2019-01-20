@@ -10,10 +10,12 @@ import {
 } from "../../config";
 
 import MenuEditor from "./components/MenuEditor";
+import Loading from "./components/Loading";
 import Header from "../../shared/Header";
 
 const Result = ({ history, location }) => {
   const [isLoading, setIsLoading] = useState(true);
+  const [showImageLoader, setShowImageLoader] = useState(false);
   const [selectedColor, setSelectedColor] = useState("transparent");
   const [rangePaddingSliderValue, setRangePaddingSliderValue] = useState(30);
   const [rangeBorderSliderValue, setRangeBorderSliderValue] = useState(5);
@@ -31,8 +33,6 @@ const Result = ({ history, location }) => {
     !location.state && history.push("/");
   });
 
-  const handleSettingsChange = () => setIsLoading(true);
-
   const getImageSource = () => {
     if (location.state.url) {
       return `${urlPrefix}?address=${location.state.url}&height=${
@@ -41,6 +41,11 @@ const Result = ({ history, location }) => {
     } else {
       return location.state.image;
     }
+  };
+
+  const handleImageLoad = () => {
+    setIsLoading(false);
+    setShowImageLoader(false);
   };
 
   const handleError = () => {
@@ -70,6 +75,7 @@ const Result = ({ history, location }) => {
               setRangeBorderSliderValue={setRangeBorderSliderValue}
               browserStyling={browserStyling}
               setBrowserStyling={setBrowserStyling}
+              setShowImageLoader={setShowImageLoader}
               icons={icons}
               browserOptions={browserOptions}
               urlSearch={location.state.url}
@@ -84,32 +90,36 @@ const Result = ({ history, location }) => {
                 borderRadius: `${rangeBorderSliderValue}px`
               }}
             >
-              <div className="browser">
-                {!isLoading && (
-                  <div
-                    className="browser-header"
-                    style={{
-                      backgroundColor:
-                        browserStyling === "light" ? "#DEE1E6" : "#191919"
-                    }}
-                  >
-                    <div className="browser-buttons">
-                      <span className="button close" />
-                      <span className="button minimize" />
-                      <span className="button maximize" />
-                    </div>
+              <div
+                className="browser"
+                style={{
+                  display: showImageLoader || isLoading ? "none" : "block"
+                }}
+              >
+                <div
+                  className="browser-header"
+                  style={{
+                    backgroundColor:
+                      browserStyling === "light" ? "#DEE1E6" : "#191919"
+                  }}
+                >
+                  <div className="browser-buttons">
+                    <span className="button close" />
+                    <span className="button minimize" />
+                    <span className="button maximize" />
                   </div>
-                )}
+                </div>
 
                 <div className="browser-content">
                   <img
                     src={getImageSource()}
                     alt="preview image"
-                    onLoad={() => setIsLoading(false)}
+                    onLoad={() => handleImageLoad()}
                     onError={() => handleError()}
                   />
                 </div>
               </div>
+              {showImageLoader && <Loading />}
             </div>
           </div>
         </div>

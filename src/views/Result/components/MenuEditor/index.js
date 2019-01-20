@@ -17,6 +17,7 @@ const MenuEditor = ({
   setRangeBorderSliderValue,
   browserStyling,
   setBrowserStyling,
+  setShowImageLoader,
   icons,
   browserOptions,
   urlSearch
@@ -58,6 +59,7 @@ const MenuEditor = ({
   const handleSizeChange = icon => {
     setIsIconSelected(icon.name);
     setDeviceSize(icon.dimensions);
+    setShowImageLoader(true);
   };
 
   const handleBrowserStylingChange = icon => {

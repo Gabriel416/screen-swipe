@@ -18,8 +18,7 @@ const MenuEditor = ({
   browserStyling,
   setBrowserStyling,
   icons,
-  browserOptions,
-  deviceSize
+  browserOptions
 }) => {
   const [viewColorPicker, setViewColorPicker] = useState(false);
   const [isIconSelected, setIsIconSelected] = useState("desktop");
@@ -28,7 +27,7 @@ const MenuEditor = ({
 
   const downloadImage = () => {
     setIsDownloadDisabled(true);
-    const node = document.querySelector(".main");
+    const node = document.querySelector(".image-preview");
     let handlerFunc;
     switch (fileType) {
       case "PNG":
@@ -44,7 +43,8 @@ const MenuEditor = ({
         handlerFunc = htmlToImage.toPng;
         break;
     }
-    handlerFunc(node, { height: "900", width: "1800" })
+
+    handlerFunc(node)
       .then(dataUrl => {
         FileSaver.saveAs(
           dataUrl,

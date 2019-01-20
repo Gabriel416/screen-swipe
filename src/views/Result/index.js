@@ -26,14 +26,22 @@ const Result = ({ history, location }) => {
     height: 600,
     width: 1020
   });
-  console.log(deviceSize, location, "location");
+  console.log(location, "location");
 
   useEffect(() => {
     !location.state && history.push("/");
   });
 
-  const handleSettingsChange = () => {
-    setIsLoading(true);
+  const handleSettingsChange = () => setIsLoading(true);
+
+  const getImageSource = () => {
+    if (location.state.url) {
+      return `${urlPrefix}?address=${location.state.url}&height=${
+        deviceSize.height
+      }&width=${deviceSize.width}`;
+    } else {
+      return location.state.image;
+    }
   };
 
   const handleError = () => {
@@ -42,9 +50,9 @@ const Result = ({ history, location }) => {
       subText: errorSubText
     });
     // fix this later
-    // setTimeout(() => {
-    //   history.push("/");
-    // }, 4000);
+    setTimeout(() => {
+      history.push("/");
+    }, 3500);
   };
 
   return (
@@ -65,7 +73,6 @@ const Result = ({ history, location }) => {
               setBrowserStyling={setBrowserStyling}
               icons={icons}
               browserOptions={browserOptions}
-              deviceSize={deviceSize}
             />
           )}
           <div className="image-preview">
@@ -96,9 +103,7 @@ const Result = ({ history, location }) => {
 
                 <div className="browser-content">
                   <img
-                    src={`${urlPrefix}?address=${location.state.url}&height=${
-                      deviceSize.height
-                    }&width=${deviceSize.width}`}
+                    src={getImageSource()}
                     alt="preview image"
                     onLoad={() => setIsLoading(false)}
                     onError={() => handleError()}

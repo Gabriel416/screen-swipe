@@ -8,14 +8,18 @@ import Searchbar from "./components/Searchbar";
 const Home = ({ history }) => {
   const [homeText] = useState({ title, subText });
 
+  const navigateToResult = state => {
+    history.push({
+      pathname: "/result",
+      state
+    });
+  };
+
   const handleSubmit = (image = null, url = null) => {
     if (url) {
-      history.push({
-        pathname: "/result",
-        state: {
-          url
-        }
-      });
+      navigateToResult({ url });
+    } else {
+      navigateToResult({ image });
     }
   };
 

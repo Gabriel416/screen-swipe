@@ -1,0 +1,20 @@
+{
+  "short_name": "Screen Swipe",
+  "name": "Screen Swipe",
+  "icons": [
+    {
+      "src": "favicon-32x32.png",
+      "sizes": "64x64 32x32 24x24 16x16",
+      "type": "image/png"
+    },
+    {
+      "src": "ms-icon-310x310.png",
+      "sizes": "256x256 512x512",
+      "type": "image/png"
+    }
+  ],
+  "start_url": "./",
+  "display": "standalone",
+  "theme_color": "#42392c",
+  "background_color": "#fee473"
+}

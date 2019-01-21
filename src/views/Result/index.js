@@ -113,7 +113,7 @@ const Result = ({ history, location }) => {
                 <div className="browser-content">
                   <img
                     src={getImageSource()}
-                    alt="preview image"
+                    alt="preview photo"
                     onLoad={() => handleImageLoad()}
                     onError={() => handleError()}
                   />

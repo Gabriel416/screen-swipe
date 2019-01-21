@@ -27,12 +27,12 @@ export const icons = [
   {
     name: "mobile",
     class: "fas fa-mobile",
-    dimensions: { height: 667, width: 375 }
+    dimensions: { height: 600, width: 375 }
   },
   {
     name: "tablet",
     class: "fas fa-tablet",
-    dimensions: { height: 1024, width: 768 }
+    dimensions: { height: 775, width: 700 }
   },
   {
     name: "desktop",

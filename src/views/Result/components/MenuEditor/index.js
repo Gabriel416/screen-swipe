@@ -96,7 +96,6 @@ const MenuEditor = ({
 
   return (
     <div className="menu">
-      <div />
       {urlSearch && (
         <div>
           <p className="option-title">Device Size</p>

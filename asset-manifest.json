@@ -1,14 +1,14 @@
 {
-  "main.css": "/static/css/main.8de954e0.chunk.css",
-  "main.js": "/static/js/main.a5f6f25a.chunk.js",
-  "main.js.map": "/static/js/main.a5f6f25a.chunk.js.map",
-  "static/js/1.8244055a.chunk.js": "/static/js/1.8244055a.chunk.js",
-  "static/js/1.8244055a.chunk.js.map": "/static/js/1.8244055a.chunk.js.map",
-  "runtime~main.js": "/static/js/runtime~main.229c360f.js",
-  "runtime~main.js.map": "/static/js/runtime~main.229c360f.js.map",
-  "static/media/foxLogo.png": "/static/media/foxLogo.09897368.png",
-  "static/css/main.8de954e0.chunk.css.map": "/static/css/main.8de954e0.chunk.css.map",
-  "index.html": "/index.html",
-  "precache-manifest.fee3da93c9135930e7be3fb8a56c04ca.js": "/precache-manifest.fee3da93c9135930e7be3fb8a56c04ca.js",
-  "service-worker.js": "/service-worker.js"
+  "main.css": "/screen-swipe/static/css/main.8de954e0.chunk.css",
+  "main.js": "/screen-swipe/static/js/main.a0b0656e.chunk.js",
+  "main.js.map": "/screen-swipe/static/js/main.a0b0656e.chunk.js.map",
+  "static/js/1.8244055a.chunk.js": "/screen-swipe/static/js/1.8244055a.chunk.js",
+  "static/js/1.8244055a.chunk.js.map": "/screen-swipe/static/js/1.8244055a.chunk.js.map",
+  "runtime~main.js": "/screen-swipe/static/js/runtime~main.8a99bdd5.js",
+  "runtime~main.js.map": "/screen-swipe/static/js/runtime~main.8a99bdd5.js.map",
+  "static/media/foxLogo.png": "/screen-swipe/static/media/foxLogo.09897368.png",
+  "static/css/main.8de954e0.chunk.css.map": "/screen-swipe/static/css/main.8de954e0.chunk.css.map",
+  "index.html": "/screen-swipe/index.html",
+  "precache-manifest.3b874497c187ee155cde018c07c7606c.js": "/screen-swipe/precache-manifest.3b874497c187ee155cde018c07c7606c.js",
+  "service-worker.js": "/screen-swipe/service-worker.js"
 }

@@ -1,4 +1,4 @@
-https://gabriel416.github.io/screen-swipe/
+🦊 https://gabriel416.github.io/screen-swipe/
 
 ## Screen Swipe 
 Progressive web app that generates editable screenshots for uploaded images or entered in urls

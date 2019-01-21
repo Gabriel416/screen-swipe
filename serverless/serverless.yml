@@ -1,0 +1,33 @@
+service: screen-swipe-server
+
+provider:
+  name: aws
+  runtime: nodejs8.10
+
+plugins:
+  - serverless-offline
+  - serverless-apigw-binary
+  - serverless-apigwy-binary
+
+custom:
+  apigwBinary:
+    types:
+      - "*/*"
+
+functions:
+  captureImage:
+    handler: handler.index
+    timeout: 30
+    memorySize: 2000
+    events:
+      - http:
+          method: GET
+          cors: true
+          path: /capture-image
+          contentHandling: CONVERT_TO_BINARY
+    layers:
+      - { Ref: ChromeLambdaLayer }
+
+layers:
+  chrome:
+    path: layer

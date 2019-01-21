@@ -1,0 +1,19 @@
+{
+  "name": "screen-swipe-server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "handler.js",
+  "dependencies": {
+    "aws-sdk": "^2.384.0",
+    "middy": "^0.20.0",
+    "puppeteer": "^1.11.0",
+    "serverless-apigw-binary": "^0.4.4",
+    "serverless-apigwy-binary": "^0.1.0"
+  },
+  "devDependencies": {
+    "serverless-offline": "^3.31.3"
+  },
+  "scripts": {
+    "deploy": "serverless deploy"
+  }
+}

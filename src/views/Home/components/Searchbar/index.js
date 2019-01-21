@@ -30,6 +30,8 @@ const Searchbar = ({ handleSubmit }) => {
         className={inputError ? "form-error" : undefined}
       >
         <input
+          aria-label="url search"
+          name="urlSearch"
           type="text"
           value={inputValue}
           onChange={e => handleChange(e.target.value)}
